@@ -1,0 +1,19 @@
+{
+  "name": "under-vite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vite": "^5.3.1"
+  },
+  "devDependencies": {
+    "sass": "^1.77.6"
+  }
+}

@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'functions';
+@import 'global';
+@import 'mixins';
+@import './layout/header';
+
+// COMPONENTS
+@import './components/index';
+
+@import 'grid';
+
+body {
+   background: $tertiary;
+}

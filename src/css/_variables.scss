@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+// principales
+$primary: #ec6325;
+$secondary : #0d263c;
+$tertiary: #eaf0f5;
+$quart: #44525e;
+
+// neutros
+$white: #fff;
+$black: #000;
+$grayf2: #f2f2f2;
+$p_color: #475661;
+
+
+// estado
+$state-close: scale(0);
+$state-burguer: scale(1);
+$state-menu: translate(-100%);
+
+//fuentes
+$main-font: "Poppins", sans-serif;
+$font-px: 62.5%;
+$small-font-size: 14px;
+$large-font-size: 18px;
+
+//paddings
+$pdx_container: 90px;
+$pdx_container_mobil: 15px;
+

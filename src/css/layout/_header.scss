@@ -1,0 +1,153 @@
+.topbar {
+    background-color: $secondary;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    padding: 7px $pdx_container_mobil;
+    overflow: hidden;
+
+    & .topbar__info {
+        padding: 5px 0;
+
+        &:nth-child(1){
+            display: none;
+        }
+        & .topbar__content:nth-child(1){
+            display: none;
+        }
+        & .topbar__content:nth-child(2){
+            justify-content:center;
+        }
+    }
+
+    & .topbar__content {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        & svg {
+            width: 24px;
+            fill: $primary;
+            height: auto;
+        }
+    }
+
+    & .topbar_redes {
+        display: flex;
+        gap: 25%;
+        list-style: none;
+    }
+
+    @media (min-width:560px) {
+        & {
+            background-color: $primary;
+        }
+        & .topbar__info{
+
+            &:nth-child(1){
+                display: block;
+            }
+        }
+    }
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: space-between;
+    width: 100%;
+    background-color: $black;
+    align-items: center;
+    padding: 20px $pdx_container_mobil;    
+    
+    & img {
+        width: 180px;
+    }
+    & .navbar__button {
+        display: none;
+    }
+
+    & .navbar__nav {
+        display: grid;
+
+        & .navbar__hamburguer,
+        & .navbar__close {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2 ;
+            transition: all 0.5S ease;
+        }
+
+        & .navbar__hamburguer{
+            transform: $state-burguer;
+        }
+    
+        & .navbar__close {
+            transform: $state-close;
+        }
+    }
+
+    &.scrollnav {
+        display: none;
+    }
+}
+
+.hero {
+    display: grid;
+    align-items: end;
+    padding:0 $pdx_container 2%;
+    height: 80vh;
+    background-image: url('../images/casa-1.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-top: -7%;
+
+    & .hero__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.6);
+    }
+
+    & h1 {
+        z-index: 99;
+        color: $white;
+    }
+}
+
+#float_menu {
+    display: grid;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: red;
+    transform: $state-menu;
+    padding: 40px 13px;
+    transition: all 0.4s ease;
+
+    &:target {
+        $state-menu: translate(0);
+        $state-close: scale(1);
+        $state-burguer: scale(0);
+    }
+
+    & .navbar__menu {
+        list-style: none;
+    }
+
+    & a {
+        color: $white;
+        text-decoration: none;
+    }
+
+    & .sub-menu {
+        display: none;
+        list-style: none;
+    }
+}

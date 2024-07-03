@@ -1,0 +1,9 @@
+@mixin responsive-padding($desktop-padding, $mobile-padding) {
+    .container {
+      padding: $mobile-padding; // Padding predeterminado para dispositivos móviles y tablets
+      
+      @media (min-width: 768px) {
+        padding: $desktop-padding; // Ajuste de padding para dispositivos de escritorio
+      }
+    }
+  }

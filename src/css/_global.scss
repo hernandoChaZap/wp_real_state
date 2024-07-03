@@ -1,0 +1,57 @@
+*,
+ul, ol, p {
+    margin: 0;
+    padding: 0;
+}
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $main-font;
+    background-color: $white!important;
+}
+
+section {
+    padding: 4rem $pdx_container;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    overflow: hidden;
+}
+
+
+
+.grid {
+    display: grid;
+}
+
+
+
+
+@include responsive-headings($base-font-size, 15);
+
+h1,h2,h3,h4,h5 {
+    color: $secondary;
+}
+h2 {
+    font-weight: 600;
+}
+h3,h4,h5 {
+    font-weight: 500;
+}
+h6{
+    color: $primary;
+    font-weight: 300;
+    font-size: 1.7 * $font-px;
+    text-transform: uppercase;
+}
+p {
+    font-size: 0.9rem;
+    color: $p_color;
+}

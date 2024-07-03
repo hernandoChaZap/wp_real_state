@@ -1,0 +1,51 @@
+@function image-url( $path ) {
+    @return  '../images/' 
+}
+
+
+$base-font-size: 5 * $font-px; 
+
+@function decrease-font-size($base-size, $percentage, $step) {
+  @return $base-size * pow((1 - $percentage / 100), $step - 1);
+}
+
+
+@mixin responsive-headings($base-size, $percentage) {
+  @for $i from 1 through 6 {
+    $size: decrease-font-size($base-size, $percentage, $i);
+    h#{$i} {
+      font-size: $size;
+      line-height: 118%;
+    }
+  }
+}
+
+@mixin btn($name, $color){
+  .btn-#{$name}{
+    border-radius: 13px;
+    padding: 10px 40px;
+    cursor:pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+
+    @if $name == outline {
+      background-color: $white;
+      color: $primary;
+      border: 1px solid $color;
+      
+    } @else {
+      border: 1px solid $color;
+      background-color: $color;
+      color: $white!important;
+    }
+
+    &:hover {
+      background-color: $secondary;
+      color: $white
+    }
+  }
+}
+@include btn('primary', $primary);
+@include btn('secondary', $secondary);
+@include btn('outline', $tertiary);
+
