@@ -1,12 +1,37 @@
-*,
-ul, ol, p {
+html {
+    scroll-behavior: smooth;
+}
+*, *::before, *::after {
+    
+    box-sizing: border-box;
+}
+body,
+ul, 
+ol, 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote {
     margin: 0;
     padding: 0;
 }
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+ul,
+ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+img,
+picture {
+    max-width: 100%;
+    display: block;
 }
 
 body {
@@ -25,11 +50,28 @@ section {
     overflow: hidden;
 }
 
-
+i {
+    color: $primary;
+    font-size: 1.1rem;
+}
 
 .grid {
     display: grid;
 }
+
+@media (max-width:400px) {
+    [class^="btn-"]{
+      max-width: none!important;
+      margin: 0!important;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    section {
+        padding: 5%;
+    }
+}
+
 
 
 
@@ -40,10 +82,10 @@ h1,h2,h3,h4,h5 {
     color: $secondary;
 }
 h2 {
-    font-weight: 600;
+    font-weight: 700;
 }
 h3,h4,h5 {
-    font-weight: 500;
+    font-weight: 400;
 }
 h6{
     color: $primary;

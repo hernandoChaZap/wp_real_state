@@ -13,13 +13,7 @@ if( !defined( 'UNDER_VITE_URI' ) ) define( 'UNDER_VITE_URI', get_theme_file_path
 if( !defined( 'UNDER_VITE_PATH' ) ) define( 'UNDER_VITE_PATH', get_theme_file_uri() );
 const URL_ASSETS = UNDER_VITE_DEV ? 'http://localhost:5173/src' : UNDER_VITE_URI . '/dist';
 
-function under_vite_script_loader( $tag, $handle  ) {
-	if( $handle === 'vite-reload' || $handle === 'scripts' ){
-		return str_replace( ' src', ' type="module" src', $tag );		
-	}
-	return $tag;
-}
-add_action( 'script_loader_tag', 'under_vite_script_loader', 10, 2 );
+
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -151,6 +145,7 @@ function under_vite_scripts() {
 	wp_style_add_data( 'under-vite-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'under-vite-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	// wp_enqueue_script( 'fontawesome', 'https://kit.fontawesome.com/abf5dd1b08.js', array(), '', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -165,6 +160,7 @@ function under_vite_scripts() {
 	
 }
 add_action( 'wp_enqueue_scripts', 'under_vite_scripts' );
+
 
 
 
@@ -195,6 +191,13 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+/**
+ * Add custom classes to different menu levels
+ *
+ * @param [type] $items
+ * @return void
+ */
 function under_vite_custom_clases_menu_items( $items )
 {
 	foreach( $items as &$item ):
@@ -216,3 +219,89 @@ function under_vite_custom_clases_menu_items( $items )
 	return $items;
 }
 add_filter( 'wp_nav_menu_objects', 'under_vite_custom_clases_menu_items' );
+
+
+/**
+ * Font Awesome Kit Setup
+ *
+ * This will add your Font Awesome Kit to the front-end, the admin back-end,
+ * and the login screen area.
+ */
+if (! function_exists('fa_custom_setup_kit') ) :
+
+	function fa_custom_setup_kit($kit_url = '') 
+	{
+		$fontawesome = [ 'wp_enqueue_scripts', 'admin_enqueue_scripts', 'login_enqueue_scripts' ];
+		foreach ( $fontawesome as $action ) :
+			add_action(
+				$action,
+				function () use ( $kit_url ) 
+				{
+					wp_enqueue_script( 'font-awesome-kit', $kit_url, [], null );
+				}
+			);
+		endforeach;
+	}
+	
+endif;
+fa_custom_setup_kit('https://kit.fontawesome.com/abf5dd1b08.js');
+
+/**
+ * Add type modules to scripts
+ *
+ * @param [type] $tag
+ * @param [type] $handle
+ * @return void
+ */
+function under_vite_script_loader( $tag, $handle  ) 
+{
+	if( $handle === 'vite-reload' || $handle === 'scripts' ){
+		return str_replace( ' src', ' type="module" src', $tag );		
+	}
+	return $tag;
+}
+add_action( 'script_loader_tag', 'under_vite_script_loader', 10, 2 );
+
+/**
+ * Let upload svg
+ *
+ * @param array $mimes
+ * @return void
+ */
+function under_vite_ad_support_svg( array $mimes )
+{
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter( 'upload_mimes', 'under_vite_ad_support_svg' );
+
+function under_vite_show_time_since_publication( $the_date, $d)
+{
+	$post_date       = get_post_time('U');
+	$current_time    = current_time('timestamp');
+	$human_time_diff = human_time_diff( $post_date, $current_time );
+	$human_time_diff_spanish = under_vite_translate_time_diff($human_time_diff);
+
+	return sprintf(
+		__('hace %s', 'text-domain'),
+		$human_time_diff_spanish
+	);
+}
+add_filter( 'get_the_date', 'under_vite_show_time_since_publication', 10, 3 );
+function under_vite_translate_time_diff($time_diff) {
+    // Reemplazar palabras en inglés por español
+    $time_diff = str_replace('mins', 'minutos', $time_diff);
+    $time_diff = str_replace('min', 'minuto', $time_diff);
+    $time_diff = str_replace('hours', 'horas', $time_diff);
+    $time_diff = str_replace('hour', 'hora', $time_diff);
+    $time_diff = str_replace('days', 'días', $time_diff);
+    $time_diff = str_replace('day', 'día', $time_diff);
+    $time_diff = str_replace('weeks', 'semanas', $time_diff);
+    $time_diff = str_replace('week', 'semana', $time_diff);
+    $time_diff = str_replace('months', 'meses', $time_diff);
+    $time_diff = str_replace('month', 'mes', $time_diff);
+    $time_diff = str_replace('years', 'años', $time_diff);
+    $time_diff = str_replace('year', 'año', $time_diff);
+
+    return $time_diff;
+}

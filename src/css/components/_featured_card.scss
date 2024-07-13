@@ -1,6 +1,14 @@
 section.featured {
     background-color: $grayf2;
     text-align: center;
+    display: grid;
+    gap: 20px;
+
+    & svg {
+        width: 22px;
+        height: auto;
+        fill: $primary!important;
+    }
 
     & .featured__p {
         text-align: center;
@@ -10,7 +18,7 @@ section.featured {
         display: grid;
         grid-template-columns: repeat(
             auto-fill,
-            minmax(280px, 1fr)
+            minmax(250px, 1fr)
         );
         gap: 16px;
     }
@@ -32,7 +40,7 @@ section.featured {
             overflow: hidden;
             transition: all 0.4s ease;
             cursor: pointer;
-            padding: 0 0 20px 0;
+            padding: 0 0 30px 0;
 
             
         }
@@ -43,31 +51,42 @@ section.featured {
             & .featured__icon {
                 position: absolute;
                 background-color: $primary;
-                height: 35px;
-                width: 35px;
-                bottom: -6%;
-                z-index: 99;
-                right: 20px;
-                border-radius: 50%;
+                top: 6%;
+                right: 0;
+                color: $white;
+                padding: 2px 12px;
+                border-radius: 12px;
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+                transform: translateX(100%);
+                transition: all 0.8s ease;
             }
         }
         
         & .featured__thumb {
+            display: grid;
+            align-content: flex-start;
             border-radius: 14px 14px 0 0;
             overflow: hidden;
             padding: 0;
-            height: 200px;
+            height: 180px;
             transition: all 0.3s ease;            
         } 
         
         & .featured__img {
             width: 100%;
-            height: 200px;
-            transition: all 0.4s ease;
+            height: auto;
+            object-fit: fill;
+            aspect-ratio: 3/2;
+            transition: all 0.9s ease;
         }
         
         & .featured__info {
+            display: grid;
+            grid-template-rows: 1fr 2fr 1fr;
+            grid-row-gap: 10%;
             background-color: $white;
+            height: 150px;
             margin: 0;
             padding: 17px 15px;
         }
@@ -76,13 +95,27 @@ section.featured {
             display: grid;
             grid-template-columns: repeat(2, max-content);
             justify-content: space-between;
+            color: lighten($quart, 15%);
+
+            & .featuret__icon__wrapper {
+                display: flex;
+                align-items: center;
+                font-size: 0.8rem;
+            }
         }
+
+
 
         & .featured__title_prop {
             font-size: 1.3rem;
             margin: 3% 0;
-            font-weight: 500;
+            font-weight: 600;
             text-align: left;
+            min-height: 50px;
+        }
+
+        & .featured__price {
+            color: lighten($quart, 15%);
         }
 
         & .featured__footer {
@@ -92,10 +125,11 @@ section.featured {
             align-items: center;
 
             & .featured__fav {
-                border-radius: 50%;
-                border: 1px solid darken($grayf2, 7%);
-                padding: 7px 10px;
-                background-color: transparent;
+                // & svg {
+                //     width: 24px;
+                //     height: auto;
+                //     fill: $primary!important;
+                // }
             }
         }
 
@@ -103,22 +137,23 @@ section.featured {
             &  img.featured__img{
                 transform: scale(1.1);
             }
+
+            & .featured__icon {
+                transform: translateX(-10%);
+            }
         }
         
     }
 
     & .btn-outline {
         margin-top: 2%;
+        max-width: fit-content;
+        margin: 0 auto;
     }
 
     @media (max-width:600px){
         & .featured__thumb {
             height: 580px;        
         } 
-        
-        & .featured__img {
-            width: 100%;
-            height: 580px;
-        }
     }
 }

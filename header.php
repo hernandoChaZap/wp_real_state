@@ -29,7 +29,11 @@
 		<?php get_template_part( 'template-parts/header/topbar' ); ?>
 		<?php get_template_part( 'template-parts/header/navbar' ); ?>
 	</header>
-	<?php get_template_part( 'template-parts/header/hero' ) ?>
+	<?php
+		if( !is_single() ):
+			get_template_part( 'template-parts/header/hero' );
+		endif;
+	?>
 
 	
 

@@ -43,6 +43,7 @@ $base-font-size: 5 * $font-px;
       background-color: $secondary;
       color: $white
     }
+    
   }
 }
 @include btn('primary', $primary);

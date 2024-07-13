@@ -3,6 +3,9 @@
 @import 'global';
 @import 'mixins';
 @import './layout/header';
+@import './layout/footer';
+@import './layout/tmp';
+@import './singles/single_property';
 
 // COMPONENTS
 @import './components/index';

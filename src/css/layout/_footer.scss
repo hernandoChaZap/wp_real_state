@@ -1,0 +1,50 @@
+footer {
+    position: relative;
+
+    & .back__top {
+        right: 30px;
+        bottom: 30px;
+        cursor: pointer;
+        background-color: $primary;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid $primary;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.9s ease-in-out;
+        animation: backtop 2s ease-in-out infinite;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(100px);
+
+        &.btn_top {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+            position: fixed;
+        }
+
+
+        & div {
+            border-width: 3px 3px 0 0;
+            transform: rotate(-45deg);
+            border-color: $white;
+            border-style: solid;
+            width: 8px;
+            height: 8px;
+        }
+    }
+}
+
+
+@keyframes backtop {
+    0%,  100% {
+        transform: translateY(3px);
+    }
+    50%{
+        transform: translateY(-3px);
+    }
+}
