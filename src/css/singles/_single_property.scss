@@ -77,6 +77,10 @@
                     color: $secondary;
                 }
             }
+
+            & .addFav {
+                cursor: pointer;
+            }
         }
 
         & .single__gallery__slide {

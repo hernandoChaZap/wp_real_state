@@ -59,6 +59,27 @@ i {
     display: grid;
 }
 
+// .menu-item-has-children{
+//     position: relative;
+//     &::after {
+//         display: inline-block;
+//         content: '';
+//         position: absolute;
+//         top: 6px;
+//         margin-left: 5px;
+//         width: 10px;
+//         height: 10px;
+//         border-width: 0 3px 3px 0 ;
+//         border-color: $white;
+//         border-style: solid;
+//         transform: rotate(45deg);
+//     }
+
+//     & .sub-menu {
+//         display: none;
+//     }
+// }
+
 @media (max-width:400px) {
     [class^="btn-"]{
       max-width: none!important;
@@ -66,7 +87,7 @@ i {
     }
 }
 
-@media screen and (max-width:1100px) {
+@media screen and (max-width:1024px) {
     section {
         padding: 5%;
     }

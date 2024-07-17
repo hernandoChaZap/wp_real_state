@@ -36,7 +36,7 @@
         <div class="single__gallery__social">
             <div class="single__gallery__fav">
                 <span>
-                    <i class="fa-regular fa-heart"></i>
+                    <i  class="addFav fa-regular fa-heart" data-id="<?php echo get_the_ID(); ?>"></i>
                 </span>
                 <span>Agregar a favoritos</span>
             </div>

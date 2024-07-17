@@ -81,6 +81,17 @@ document.addEventListener('DOMContentLoaded', function(){
       // horizontalOrder:true
     })
 
+    const favArr = []
+    const addFav = document.querySelector('.addFav')
+    addFav.addEventListener('click', () => {
+
+      const property = {
+        propertieId : addFav.getAttribute('data-id'),
+        titleProp : addFav.closest('h1').textContent
+      }
+      console.log(property.titleProp)
+    })
+
     
     
     

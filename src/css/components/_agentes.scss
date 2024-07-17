@@ -1,0 +1,81 @@
+.agentes {
+    background-color: #f7f8f9;
+    text-align: center;
+
+    & .agentes__data {
+        margin-bottom: 35px;
+    }
+
+    & .agentes__loop {
+        display: grid;
+        
+         & .agentes__card {
+            position: relative;
+            border-radius: 8px;
+            background-color: $white;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            padding: 20px 0;
+
+            &:hover {
+                box-shadow: 0 70px 70px rgba($color: $black, $alpha: 0.1);
+                transform: translate(0, -10px);
+                
+            }
+
+            & .agentes__card__img {
+                padding: 25px;
+                display: flex;
+                justify-content: center;
+                & img {
+                    border-radius: 50%;
+                    width: 190px;
+                    height: auto;
+                }
+            }
+
+
+            & h4 {
+                font-size: 1.3rem;
+                font-weight: 500;
+                color: $primary;
+            }
+
+            & .agentes__card_data {
+                padding: 10px;
+            }
+
+            & .agentes__card__social {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 11px;
+                margin-top: 8px;
+
+                & i {
+                    color: lighten($secondary, 15%);
+                }
+            }
+         }
+    }
+
+    @media (min-width: 768px) {
+        
+        & .agentes__loop {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-bottom: 0;
+            gap: 25px;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        & .agentes__loop {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-bottom: 0;
+            gap: 35px;
+        }
+    }
+}

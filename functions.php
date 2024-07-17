@@ -156,6 +156,8 @@ function under_vite_scripts() {
 		wp_enqueue_style( 'custom', URL_ASSETS . '/css/custom.scss', [], '1.0', 'all' );
 	endif;
 	wp_enqueue_script( 'scripts', URL_ASSETS . '/js/scripts.js', [], '1.0', true );
+	// wp_localize_script('scripts',  )	
+	
 	wp_enqueue_style( 'custom', URL_ASSETS . '/css/custom.css' , [], '1.0', 'all' );
 	
 }

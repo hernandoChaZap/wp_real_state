@@ -1,5 +1,35 @@
 footer {
     position: relative;
+    background-color: $secondary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid $primary;
+    
+    & h4 {
+        color: $grayf2
+    }
+
+    & .footer__data {
+        padding: 25px $pdx_container_mobil;
+
+        & h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+    }
+    
+    & .footer__copyright {
+        position: absolute;
+        bottom: 0;
+        padding: 25px $pdx_container_mobil;
+        background-color: darken($quart, 20%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        text-align: center;
+    }
 
     & .back__top {
         right: 30px;
@@ -35,6 +65,36 @@ footer {
             border-style: solid;
             width: 8px;
             height: 8px;
+        }
+    }
+
+    @media (min-width:768px) {
+
+        & .footer__data {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 80px;
+        }
+
+        & .footer__copyright {
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+
+        & .footer__data {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+
+            & .footer_wrapper {
+                padding: 6px 12px;
+                margin-top: 10px;
+            }
         }
     }
 }

@@ -7,11 +7,57 @@
 @import './layout/tmp';
 @import './singles/single_property';
 
+
+
 // COMPONENTS
 @import './components/index';
+@import './components/agentes';
 
 @import 'grid';
 
 body {
    background: $tertiary;
+}
+
+.menu{
+   display: flex;
+   gap: 5px;
+   height: 16px;
+}
+.menu-item{
+   // @apply text-gray-800 px-2 py-1 w-full ;
+   padding: 6px 9px;
+   width: 100%;
+}
+
+.menu .menu-item-has-children {
+   // @apply relative;
+   position: relative;
+}
+
+.menu .menu-item-has-children .sub-menu {
+   // @apply absolute bg-gray-500 shadow-2xl  left-0 border-b
+   // border-b-gray-200 z-10 transition-all duration-500 ease-in-out translate-y-5
+   //   min-w-[150px] opacity-0 hover:text-gray-50 pointer-events-none;
+     position: absolute;
+     left: 0;
+     transition: all 0.5s ease;
+     opacity: 0;
+     min-width: 150px;
+     pointer-events: none;
+     transform: translateY(25px);
+}
+
+.menu .menu-item .menu-item-has-children:nth-child(n+1) .sub-menu {
+   // @apply absolute left-full top-0 ;
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+
+.menu .menu-item-has-children:hover > .sub-menu{
+   // @apply  opacity-100 translate-y-0 pointer-events-auto;
+   opacity: 1;
+   pointer-events: auto;
+   transform: translateY(0);
 }
